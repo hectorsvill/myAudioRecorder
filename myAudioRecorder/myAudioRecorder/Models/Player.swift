@@ -11,14 +11,11 @@ import AVFoundation
 class Player: NSObject {
 	let forResource: String
 	
-	
-	private var audioPlayer: AVAudioPlayer!
+	private var audioPlayer: AVAudioPlayer?
 	private var timer: Timer?
 	
-	
-	
-	
-	 init(forResource: String) {
+
+	init(forResource: String) {
 		self.forResource = forResource
 		let audioUrl = Bundle.main.url(forResource: forResource, withExtension: "caf")!
 		do {
@@ -27,4 +24,25 @@ class Player: NSObject {
 			NSLog("audioPlayer: \(error)")
 		}
 	}
+	
+	var isPlaying: Bool {
+		guard let audioPlayer = audioPlayer else { return false }
+		return audioPlayer.isPlaying
+	}
+	
+	var elapsedTime: TimeInterval? {
+		guard let audioPlayer = audioPlayer else { return  nil}
+		return audioPlayer.currentTime
+	}
+	
+	var duration: TimeInterval? {
+		guard let audioPlayer = audioPlayer else { return  nil}
+		return audioPlayer.duration
+	}
+	
+	
+	
+	
+	
+	
 }
