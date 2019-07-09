@@ -13,6 +13,7 @@
 		E8C6F04722D530E800D2FACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C6F04622D530E800D2FACE /* Assets.xcassets */; };
 		E8C6F04A22D530E800D2FACE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C6F04822D530E800D2FACE /* LaunchScreen.storyboard */; };
 		E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F05322D5347A00D2FACE /* Recorder.swift */; };
+		E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B222D54B0A00E1E8BD /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E8C6F04922D530E800D2FACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8C6F04B22D530E800D2FACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C6F05322D5347A00D2FACE /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		E8EB89B222D54B0A00E1E8BD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C6F05322D5347A00D2FACE /* Recorder.swift */,
+				E8EB89B222D54B0A00E1E8BD /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */,
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
 				E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */,
