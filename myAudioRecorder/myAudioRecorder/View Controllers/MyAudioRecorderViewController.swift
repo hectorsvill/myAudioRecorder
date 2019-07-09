@@ -23,10 +23,13 @@ class MyAudioRecorderViewController: UIViewController {
 	@objc func addRecording() {
 		recorder.toggleRecording()
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(addRecording))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
-
+	@objc func stopRecording() {
+		recorder.stop()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecording))
+	}
 
 }
 
