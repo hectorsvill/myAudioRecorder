@@ -61,7 +61,6 @@
 				E8C6F05222D5342500D2FACE /* View Controllers */,
 				E8C6F05122D5340500D2FACE /* Storyboards */,
 				E8C6F04622D530E800D2FACE /* Assets.xcassets */,
-				E8C6F04822D530E800D2FACE /* LaunchScreen.storyboard */,
 				E8C6F04B22D530E800D2FACE /* Info.plist */,
 			);
 			path = myAudioRecorder;
@@ -71,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C6F04322D530E700D2FACE /* Main.storyboard */,
+				E8C6F04822D530E800D2FACE /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";

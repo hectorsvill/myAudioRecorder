@@ -9,13 +9,23 @@
 import UIKit
 
 class MyAudioRecorderViewController: UIViewController {
-
+	lazy private var recorder = Recorder()
+	
+	@IBOutlet var addButton: UIBarButtonItem!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecording))
 		
 	}
+	
+	@objc func addRecording() {
+		recorder.toggleRecording()
+		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(addRecording))
+	}
+	
 
 
 }

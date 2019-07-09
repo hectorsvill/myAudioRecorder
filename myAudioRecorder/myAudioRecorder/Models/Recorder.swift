@@ -49,6 +49,14 @@ class Recorder: NSObject {
 			self.audioRecorder = nil
 		}
 	}
+	
+	func toggleRecording() {
+		if isRecording {
+			stop()
+		} else {
+			record()
+		}
+	}
 }
 
 extension Recorder: AVAudioRecorderDelegate {
