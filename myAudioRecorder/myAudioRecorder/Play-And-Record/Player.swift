@@ -26,7 +26,7 @@ class Player: NSObject {
 		} catch {
 			NSLog("audioPlayer: \(error)")
 		}
-		audioPlayer?.play()
+		audioPlayer!.play()
 	}
 	
 	var isPlaying: Bool {
