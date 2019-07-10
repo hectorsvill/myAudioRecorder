@@ -56,7 +56,8 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
-		
+		guard let url = recordedNameLabel.text else { return }
+		player = Player(forResource: url)
 	}
 	
 	@IBAction func sliderValueChanged(_ sender: Any) {
