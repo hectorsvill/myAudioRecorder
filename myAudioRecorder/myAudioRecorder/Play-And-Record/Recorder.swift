@@ -11,7 +11,7 @@ import AVFoundation
 class Recorder: NSObject {
 	private var audioRecorder: AVAudioRecorder?
 	var fileUrl: URL?
-	var name: String?
+
 	
 	var isRecording: Bool {
 		guard let audioRecorder = audioRecorder else { return false }
@@ -24,13 +24,8 @@ class Recorder: NSObject {
 	
 	
 	/// create url for record, create recorder, start  recorder
-	func record() {
+	func startRecord(with name: String) {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-		
-		guard let name = name else {
-			NSLog("class Recorder: NSObject Warning: Name not set")
-			return
-		}
 		//name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
 		
 		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
@@ -55,13 +50,13 @@ class Recorder: NSObject {
 		}
 	}
 	
-	func toggleRecording() {
-		if isRecording {
-			stop()
-		} else {
-			record()
-		}
-	}
+//	func toggleRecording() {
+//		if isRecording {
+//			stop()
+//		} else {
+//			record()
+//		}
+//	}
 }
 
 extension Recorder: AVAudioRecorderDelegate {

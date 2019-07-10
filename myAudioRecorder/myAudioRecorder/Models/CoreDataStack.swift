@@ -28,7 +28,7 @@ class CoreDataStack {
 	}
 	
 	lazy var container: NSPersistentContainer = {
-		let container = NSPersistentContainer(name: "Record")
+		let container = NSPersistentContainer(name: "Media")
 		container.loadPersistentStores { _, error in
 			if let error = error {
 				fatalError("Failed to load presistent store: \(error)")

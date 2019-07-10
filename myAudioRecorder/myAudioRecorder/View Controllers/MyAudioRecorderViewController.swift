@@ -9,7 +9,7 @@
 import UIKit
 
 class MyAudioRecorderViewController: UIViewController {
-	let recordController = RecordController()
+//	let recordController = RecordController()
 	
 	private var recorder: Recorder?
 	private var player: Player?
@@ -27,13 +27,10 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	func setupViews() {
-		recordController.fetchRecords()
+//		recordController.fetchRecords()
 		tableView.delegate = self
 		tableView.dataSource = self
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
-	
-//		playToggleButton.setTitle("Play", for: .normal)
-//		playToggleButton.isEnabled = false
 	}
 	
 	
@@ -47,9 +44,9 @@ class MyAudioRecorderViewController: UIViewController {
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
 			if let nametext = alertController.textFields![0].text {
 				name = nametext
+				
+				self.recordedNameLabel.text = name
 			}
-			
-
 		}))
 		
 		present(alertController, animated: true)
@@ -59,11 +56,11 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	@objc func startRecorder() {
 		let name = getMediaName()
-		print(name)
 		
-		
-//		recorder = Recorder()
-//		recorder?.toggleRecording()
+		//setup Recorder
+		recorder = Recorder()
+		recorder?.startRecord(with: name)
+
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
@@ -104,20 +101,20 @@ class MyAudioRecorderViewController: UIViewController {
 
 extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return recordController.records.count
+		return 5 //recordController.records.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
-		let record = recordController.records[indexPath.row]
-		cell.textLabel?.text = "\(record.url!)"
+//		let record = recordController.records[indexPath.row]
+//		cell.textLabel?.text = "\(record.url!)"
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let record = recordController.records[indexPath.row]
-		recordedNameLabel.text = "\(record.url!)"
-		playToggleButton.isEnabled = true
+//		let record = recordController.records[indexPath.row]
+//		recordedNameLabel.text = "\(record.url!)"
+//		playToggleButton.isEnabled = true
 	}
 }
 
