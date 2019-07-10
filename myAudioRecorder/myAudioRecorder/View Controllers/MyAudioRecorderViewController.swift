@@ -97,8 +97,6 @@ class MyAudioRecorderViewController: UIViewController {
 
 }
 
-
-
 extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return mediaController.allMeddia.count
@@ -106,6 +104,7 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
+		
 		let media = mediaController.allMeddia[indexPath.row]
 		
 		cell.textLabel?.text = "\(media.name!)"
@@ -114,7 +113,6 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let media = mediaController.allMeddia[indexPath.row]
-		
 		recordedNameLabel.text = "\(media.name!)"
 	}
 }
