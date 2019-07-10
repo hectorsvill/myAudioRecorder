@@ -15,6 +15,8 @@
 		E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F05322D5347A00D2FACE /* Recorder.swift */; };
 		E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B222D54B0A00E1E8BD /* Player.swift */; };
 		E8EB89B622D5ABFC00E1E8BD /* Record.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */; };
+		E8EB89B822D5B1DE00E1E8BD /* Convenience+Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B722D5B1DE00E1E8BD /* Convenience+Record.swift */; };
+		E8EB89BA22D5B1ED00E1E8BD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B922D5B1ED00E1E8BD /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		E8C6F05322D5347A00D2FACE /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		E8EB89B222D54B0A00E1E8BD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E8EB89B522D5ABFC00E1E8BD /* Record.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Record.xcdatamodel; sourceTree = "<group>"; };
+		E8EB89B722D5B1DE00E1E8BD /* Convenience+Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convenience+Record.swift"; sourceTree = "<group>"; };
+		E8EB89B922D5B1ED00E1E8BD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */,
+				E8EB89B722D5B1DE00E1E8BD /* Convenience+Record.swift */,
+				E8EB89B922D5B1ED00E1E8BD /* CoreDataStack.swift */,
 				E8C6F05322D5347A00D2FACE /* Recorder.swift */,
 				E8EB89B222D54B0A00E1E8BD /* Player.swift */,
 			);
@@ -168,10 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EB89BA22D5B1ED00E1E8BD /* CoreDataStack.swift in Sources */,
 				E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */,
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
 				E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */,
+				E8EB89B822D5B1DE00E1E8BD /* Convenience+Record.swift in Sources */,
 				E8EB89B622D5ABFC00E1E8BD /* Record.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

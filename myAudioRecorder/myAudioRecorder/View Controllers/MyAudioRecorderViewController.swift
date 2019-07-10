@@ -36,19 +36,14 @@ class MyAudioRecorderViewController: UIViewController {
 	@objc func startRecorder() {
 		recorder = Recorder()
 		recorder?.toggleRecording()
-		if let fileUrl = recorder?.fileUrl {
-			recordingList.append(fileUrl)
-			print(fileUrl)
-			
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-				
-			}
-			navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
-		}
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
 	@objc func stopRecording() {
+		guard let fileUrl = recorder?.fileUrl else { return }
+		
+		recordingList.append(fileUrl)
+		self.tableView.reloadData()
 		
 		recorder?.stop()
 		recorder = nil
@@ -56,11 +51,27 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
-		guard let url = recordedNameLabel.text else { return }
-		player = Player(forResource: url)
+		if let _ = player {
+			guard let url = recordedNameLabel.text else { return }
+			
+			
+			player = Player(forResource: url)
+			guard let duration  = player?.duration else { return }
+			slider.maximumValue = Float(duration)
+			print("The duaration is : ",duration)
+			
+			
+			
+			
+//			playToggleButton.setTitle("Pause", for: .normal)
+		} else {
+			player?.pause()
+			playToggleButton.setTitle("Pause", for: .normal)
+		}
 	}
 	
 	@IBAction func sliderValueChanged(_ sender: Any) {
+		
 	}
 	
 
@@ -84,6 +95,9 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		let record = recordingList[indexPath.row]
 		recordedNameLabel.text = "\(record)"
 		playToggleButton.isEnabled = true
+		
+		print(record)
+		
 	}
 }
 
