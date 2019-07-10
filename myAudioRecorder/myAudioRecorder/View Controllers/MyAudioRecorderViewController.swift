@@ -10,6 +10,7 @@ import UIKit
 
 class MyAudioRecorderViewController: UIViewController {
 	private var recorder: Recorder?
+	private var player: Player?
 	
 	var recordingList: [URL] = []
 	
@@ -79,7 +80,9 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+		let record = recordingList[indexPath.row]
+		recordedNameLabel.text = "\(record)"
+		playToggleButton.isEnabled = true
 	}
 }
 
