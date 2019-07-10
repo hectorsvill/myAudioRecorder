@@ -83,16 +83,16 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
-		guard recordedNameLabel.text?.isEmpty  == false else { return }
+		guard let name = recordedNameLabel.text else { return }
 		
 		
 		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
 		
 //		guard let url = recordedNameLabel.text else { return }
 //
-//		player = Player(forResource: url)
-//		player?.setupPlayer(forResource: url)
-//		player?.play()
+		player = Player(name: name)
+		player?.setupPlayer()
+		
 		
 	}
 	

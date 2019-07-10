@@ -9,25 +9,24 @@
 import AVFoundation
 
 class Player: NSObject {
-	let forResource: String
+	let name: String
 	private var audioPlayer: AVAudioPlayer?
 	private var timer: Timer?
 
-	init(forResource: String) {
-		self.forResource = forResource
+	init(name: String) {
+		self.name = name
 	}
 	
-	func setupPlayer(forResource: String) {
-		print(forResource)
-		if let audioUrl = Bundle.main.url(forResource: "35B50F4F-B903-47E4-8C8E-52B68BAB5E36", withExtension: ".caf") {
-			do {
-				audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
-			} catch {
-				NSLog("audioPlayer: \(error)")
-			}
-		} else {
-			NSLog("\n\nsetupPlayer Could not find audioUrl forResource: \(forResource)\n\n")
+	func setupPlayer() {
+		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+		
+		let url = documentsDirectory.appendingPathComponent(name).appendingPathExtension("caf")
+		do {
+			audioPlayer = try AVAudioPlayer(contentsOf: url)
+		} catch {
+			NSLog("audioPlayer: \(error)")
 		}
+		audioPlayer?.play()
 	}
 	
 	var isPlaying: Bool {
