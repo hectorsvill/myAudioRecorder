@@ -42,10 +42,12 @@ class MyAudioRecorderViewController: UIViewController {
 		alertController.addTextField()
 		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-			if let nametext = alertController.textFields![0].text {
+			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
 				name = nametext
 				
 				self.recordedNameLabel.text = name
+			} else {
+				getMediaName()
 			}
 		}))
 		
@@ -58,20 +60,18 @@ class MyAudioRecorderViewController: UIViewController {
 		let name = getMediaName()
 		
 		//setup Recorder
-		recorder = Recorder()
-		recorder?.startRecord(with: name)
+		//recorder = Recorder()
+		//recorder?.startRecord(with: name)
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
 	@objc func stopRecording() {
-//		guard let fileUrl = recorder?.name else { return }
-//		let url = "\(fileUrl)"
-//
-//		recordController.addRecord(url: url)
-//
-//		recorder?.stop()
-//		recorder = nil
+		guard let name = recordedNameLabel.text else { fatalError("Label has an empty name")}
+		recorder?.stop()
+		recorder = nil
+		
+		print(recordedNameLabel.text)
 //		self.tableView.reloadData()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
