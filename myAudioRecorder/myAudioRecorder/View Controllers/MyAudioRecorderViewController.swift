@@ -57,7 +57,7 @@ class MyAudioRecorderViewController: UIViewController {
 		guard let url = recordedNameLabel.text else { return }
 		
 		player = Player(forResource: url)
-		
+		player?.setupPlayer(forResource: url)
 		player?.play()
 			
 	}
@@ -87,9 +87,6 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		let record = recordController.records[indexPath.row]
 		recordedNameLabel.text = "\(record.url!)"
 		playToggleButton.isEnabled = true
-		
-		print(record)
-		
 	}
 }
 

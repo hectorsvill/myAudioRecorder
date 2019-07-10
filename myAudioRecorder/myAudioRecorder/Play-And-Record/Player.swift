@@ -18,12 +18,15 @@ class Player: NSObject {
 	}
 	
 	func setupPlayer(forResource: String) {
-		
-		let audioUrl = Bundle.main.url(forResource: forResource, withExtension: "caf")!
-		do {
-			audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
-		} catch {
-			NSLog("audioPlayer: \(error)")
+		print(forResource)
+		if let audioUrl = Bundle.main.url(forResource: "35B50F4F-B903-47E4-8C8E-52B68BAB5E36", withExtension: ".caf") {
+			do {
+				audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+			} catch {
+				NSLog("audioPlayer: \(error)")
+			}
+		} else {
+			NSLog("\n\nsetupPlayer Could not find audioUrl forResource: \(forResource)\n\n")
 		}
 	}
 	
