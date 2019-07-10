@@ -32,7 +32,7 @@ class MediaController {
 	}
 	
 	func addNewMedia(name: String, type: String) {
-		let media = Media(
+//		let media = Media(
 		
 		
 		try? CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)

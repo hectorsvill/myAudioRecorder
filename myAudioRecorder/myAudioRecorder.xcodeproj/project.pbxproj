@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E800B36422D68D5900169F98 /* Media.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E800B36222D68D5900169F98 /* Media.xcdatamodeld */; };
 		E800B36622D68EB500169F98 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36522D68EB500169F98 /* MediaController.swift */; };
+		E800B36922D68FCE00169F98 /* Convenience+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36822D68FCE00169F98 /* Convenience+Media.swift */; };
 		E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F03F22D530E700D2FACE /* AppDelegate.swift */; };
 		E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */; };
 		E8C6F04522D530E700D2FACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C6F04322D530E700D2FACE /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		E800B36322D68D5900169F98 /* Media.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Media.xcdatamodel; sourceTree = "<group>"; };
 		E800B36522D68EB500169F98 /* MediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
+		E800B36822D68FCE00169F98 /* Convenience+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convenience+Media.swift"; sourceTree = "<group>"; };
 		E8C6F03C22D530E700D2FACE /* myAudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myAudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C6F03F22D530E700D2FACE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAudioRecorderViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				E800B36222D68D5900169F98 /* Media.xcdatamodeld */,
 				E8EB89B922D5B1ED00E1E8BD /* CoreDataStack.swift */,
+				E800B36822D68FCE00169F98 /* Convenience+Media.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				E8EB89BA22D5B1ED00E1E8BD /* CoreDataStack.swift in Sources */,
 				E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */,
+				E800B36922D68FCE00169F98 /* Convenience+Media.swift in Sources */,
 				E800B36422D68D5900169F98 /* Media.xcdatamodeld in Sources */,
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
