@@ -21,10 +21,22 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	@IBOutlet var tableView: UITableView!
 	
+	
+	var currentMediaName: String {
+		return recordedNameLabel.text ?? ""
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupViews()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		mediaController.fetchTracks()
+	}
+	
 	
 	func setupViews() {
 		mediaController.fetchTracks()
@@ -34,45 +46,39 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	
-	private func getMediaName() -> String {
-		var name = ""
-		
+	private func getMediaName() {
 		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
 		
 		alertController.addTextField()
 		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
 			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
-				name = nametext
-				
-				self.recordedNameLabel.text = name
-			} else {
-				getMediaName()
+				self.recordedNameLabel.text = nametext
 			}
 		}))
 		
 		present(alertController, animated: true)
-		
-		return name
 	}
 	
 	@objc func startRecorder() {
-		let name = getMediaName()
+		getMediaName()
 		
 		//setup Recorder
-		//recorder = Recorder()
-		//recorder?.startRecord(with: name)
+		recorder = Recorder()
+		recorder?.startRecord(with: currentMediaName)
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
 	@objc func stopRecording() {
-		guard let name = recordedNameLabel.text else { fatalError("Label has an empty name")}
+		
 		recorder?.stop()
 		recorder = nil
 		
-		print(recordedNameLabel.text)
-//		self.tableView.reloadData()
+		mediaController.addNewMedia(name: currentMediaName, type: "audio")
+		recordedNameLabel.text = ""
+		self.tableView.reloadData()
+		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
 	
@@ -114,6 +120,8 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let media = mediaController.allMeddia[indexPath.row]
 		recordedNameLabel.text = "\(media.name!)"
+		
+		
 	}
 }
 

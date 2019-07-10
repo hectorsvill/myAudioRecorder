@@ -11,7 +11,7 @@ import CoreData
 
 extension Media {
 	
-	convenience init(name: String, typee: String , date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext ) {
+	convenience init(name: String, type: String , date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		self.init(context: context)
 		self.name = name
 		self.type = type

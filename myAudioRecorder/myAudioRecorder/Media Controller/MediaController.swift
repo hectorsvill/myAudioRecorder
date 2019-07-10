@@ -15,6 +15,10 @@ class MediaController {
 	private (set) var allMeddia: [Media] = []
 	
 	
+	init() {
+		fetchTracks()
+	}
+	
 	func fetchTracks() {
 		
 		let fetchRequest: NSFetchRequest<Media> = Media.fetchRequest()
@@ -34,8 +38,9 @@ class MediaController {
 	
 	//types can be audio or video
 	func addNewMedia(name: String, type: String) {
-		let media = Media(name: name, typee: type)
+		let media = Media(name: name, type: type)
 		allMeddia.append(media)
+		
 		try? CoreDataStack.shared.save()
 	}
 
