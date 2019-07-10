@@ -37,7 +37,31 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	
+	private func getMediaName() -> String {
+		var name = ""
+		
+		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
+		
+		alertController.addTextField()
+		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+			if let nametext = alertController.textFields![0].text {
+				name = nametext
+			}
+			
+
+		}))
+		
+		present(alertController, animated: true)
+		
+		return name
+	}
+	
 	@objc func startRecorder() {
+		let name = getMediaName()
+		print(name)
+		
+		
 //		recorder = Recorder()
 //		recorder?.toggleRecording()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
