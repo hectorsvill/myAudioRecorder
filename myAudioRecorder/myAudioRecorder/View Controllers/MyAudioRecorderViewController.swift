@@ -9,7 +9,7 @@
 import UIKit
 
 class MyAudioRecorderViewController: UIViewController {
-//	let recordController = RecordController()
+	let mediaController = MediaController()
 	
 	private var recorder: Recorder?
 	private var player: Player?
@@ -27,7 +27,7 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	func setupViews() {
-//		recordController.fetchRecords()
+		mediaController.fetchTracks()
 		tableView.delegate = self
 		tableView.dataSource = self
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
@@ -101,20 +101,21 @@ class MyAudioRecorderViewController: UIViewController {
 
 extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 5 //recordController.records.count
+		return mediaController.allMeddia.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
-//		let record = recordController.records[indexPath.row]
-//		cell.textLabel?.text = "\(record.url!)"
+		let media = mediaController.allMeddia[indexPath.row]
+		
+		cell.textLabel?.text = "\(media.name!)"
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//		let record = recordController.records[indexPath.row]
-//		recordedNameLabel.text = "\(record.url!)"
-//		playToggleButton.isEnabled = true
+		let media = mediaController.allMeddia[indexPath.row]
+		
+		recordedNameLabel.text = "\(media.name!)"
 	}
 }
 
