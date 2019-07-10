@@ -10,8 +10,9 @@ import Foundation
 import CoreData
 
 
+
 class MediaController {
-	var allMeddia: [Media] = []
+	private (set) var allMeddia: [Media] = []
 	
 	
 	func fetchTracks() {
@@ -31,13 +32,15 @@ class MediaController {
 		}
 	}
 	
+	//types can be audio or video
 	func addNewMedia(name: String, type: String) {
-//		let media = Media(
-		
-		
-		try? CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
+		let media = Media(name: name, typee: type)
+		allMeddia.append(media)
+		try? CoreDataStack.shared.save()
 	}
 
-	
+	func deleteMedia(_ name: String) {
+		
+	}
 	
 }
