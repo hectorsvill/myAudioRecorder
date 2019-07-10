@@ -15,7 +15,6 @@ class RecordController {
 	func fetchRecords() {
 	
 		let fetchRequest: NSFetchRequest<Record> = Record.fetchRequest()
-//		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
 		let fetchResultController =  NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
 		
 		CoreDataStack.shared.mainContext.performAndWait {
