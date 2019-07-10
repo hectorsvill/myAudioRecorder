@@ -26,7 +26,7 @@ class Recorder: NSObject {
 		
 		let name = ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
 		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
-		
+		print("Location for audio: \(fileUrl!)")
 		let format = AVAudioFormat(standardFormatWithSampleRate: 44_100, channels: 1)!
 		
 		do {
