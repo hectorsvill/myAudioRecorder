@@ -25,9 +25,16 @@ class Recorder: NSObject {
 	func record() {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
-		name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
-		fileUrl = documentDirectory.appendingPathComponent(name!).appendingPathExtension("caf")
-		print(fileUrl!, name!)
+		guard let name = name else {
+			NSLog("class Recorder: NSObject Warning: Name not set")
+			return
+		}
+		
+
+		//name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
+		
+		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
+		print(fileUrl!, name)
 		let format = AVAudioFormat(standardFormatWithSampleRate: 44_100, channels: 1)!
 		
 		do {
