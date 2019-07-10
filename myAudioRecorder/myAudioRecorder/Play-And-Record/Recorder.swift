@@ -22,6 +22,8 @@ class Recorder: NSObject {
 		super.init()
 	}
 	
+	
+	/// create url for record, create recorder, start  recorder
 	func record() {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
@@ -29,8 +31,6 @@ class Recorder: NSObject {
 			NSLog("class Recorder: NSObject Warning: Name not set")
 			return
 		}
-		
-
 		//name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
 		
 		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
@@ -46,8 +46,6 @@ class Recorder: NSObject {
 		
 		guard let audioRecorder = audioRecorder else { return }
 		audioRecorder.record()
-		
-		
 	}
 	
 	func stop() {

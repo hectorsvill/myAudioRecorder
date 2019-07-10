@@ -14,8 +14,6 @@ class MyAudioRecorderViewController: UIViewController {
 	private var recorder: Recorder?
 	private var player: Player?
 	
-	
-	
 	@IBOutlet var playToggleButton: UIButton!
 	@IBOutlet var recordedNameLabel: UILabel!
 	@IBOutlet var timerLabel: UILabel!
@@ -25,41 +23,50 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupViews()
+	}
+	
+	func setupViews() {
 		recordController.fetchRecords()
 		tableView.delegate = self
 		tableView.dataSource = self
-		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
-		
-		playToggleButton.setTitle("Play", for: .normal)
-		playToggleButton.isEnabled = false
+	
+//		playToggleButton.setTitle("Play", for: .normal)
+//		playToggleButton.isEnabled = false
 	}
 	
+	
 	@objc func startRecorder() {
-		recorder = Recorder()
-		recorder?.toggleRecording()
+//		recorder = Recorder()
+//		recorder?.toggleRecording()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
 	@objc func stopRecording() {
-		guard let fileUrl = recorder?.name else { return }
-		let url = "\(fileUrl)"
-		
-		recordController.addRecord(url: url)
-		
-		recorder?.stop()
-		recorder = nil
-		self.tableView.reloadData()
+//		guard let fileUrl = recorder?.name else { return }
+//		let url = "\(fileUrl)"
+//
+//		recordController.addRecord(url: url)
+//
+//		recorder?.stop()
+//		recorder = nil
+//		self.tableView.reloadData()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
-		guard let url = recordedNameLabel.text else { return }
+		guard recordedNameLabel.text?.isEmpty  == false else { return }
 		
-		player = Player(forResource: url)
-		player?.setupPlayer(forResource: url)
-		player?.play()
-			
+		
+		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
+		
+//		guard let url = recordedNameLabel.text else { return }
+//
+//		player = Player(forResource: url)
+//		player?.setupPlayer(forResource: url)
+//		player?.play()
+		
 	}
 	
 	@IBAction func sliderValueChanged(_ sender: Any) {
