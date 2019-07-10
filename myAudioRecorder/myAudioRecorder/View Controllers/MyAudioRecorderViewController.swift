@@ -9,9 +9,9 @@
 import UIKit
 
 class MyAudioRecorderViewController: UIViewController {
-	lazy private var recorder = Recorder()
+	private var recorder: Recorder?
 	
-	var recordingList: [String] = []
+	var recordingList: [URL] = []
 	
 	@IBOutlet var playToggleButton: UIButton!
 	@IBOutlet var recordedNameLabel: UILabel!
@@ -23,20 +23,35 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecording))
+		tableView.delegate = self
+		tableView.dataSource = self
+		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 		
 		playToggleButton.setTitle("Play", for: .normal)
+		playToggleButton.isEnabled = false
 	}
 	
-	@objc func addRecording() {
-		recorder.toggleRecording()
-		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
+	@objc func startRecorder() {
+		recorder = Recorder()
+		recorder?.toggleRecording()
+		if let fileUrl = recorder?.fileUrl {
+			recordingList.append(fileUrl)
+			print(fileUrl)
+			
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+				
+			}
+			navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
+		}
 	}
 	
 	@objc func stopRecording() {
-		recorder.stop()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRecording))
+		
+		recorder?.stop()
+		recorder = nil
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
@@ -53,15 +68,18 @@ class MyAudioRecorderViewController: UIViewController {
 
 extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return recordingList.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
-		
-		cell.textLabel?.text = "\(indexPath.row)"
+		let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath)
+		let record = recordingList[indexPath.row]
+		cell.textLabel?.text = "\(record)"
 		return cell
 	}
 	
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+	}
 }
+

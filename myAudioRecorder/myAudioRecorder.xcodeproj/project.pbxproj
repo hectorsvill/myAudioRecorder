@@ -14,6 +14,7 @@
 		E8C6F04A22D530E800D2FACE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C6F04822D530E800D2FACE /* LaunchScreen.storyboard */; };
 		E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F05322D5347A00D2FACE /* Recorder.swift */; };
 		E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B222D54B0A00E1E8BD /* Player.swift */; };
+		E8EB89B622D5ABFC00E1E8BD /* Record.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E8C6F04B22D530E800D2FACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C6F05322D5347A00D2FACE /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		E8EB89B222D54B0A00E1E8BD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E8EB89B522D5ABFC00E1E8BD /* Record.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Record.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		E8C6F05522D5348000D2FACE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */,
 				E8C6F05322D5347A00D2FACE /* Recorder.swift */,
 				E8EB89B222D54B0A00E1E8BD /* Player.swift */,
 			);
@@ -169,6 +172,7 @@
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
 				E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */,
+				E8EB89B622D5ABFC00E1E8BD /* Record.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +372,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E8EB89B522D5ABFC00E1E8BD /* Record.xcdatamodel */,
+			);
+			currentVersion = E8EB89B522D5ABFC00E1E8BD /* Record.xcdatamodel */;
+			path = Record.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E8C6F03422D530E700D2FACE /* Project object */;
 }

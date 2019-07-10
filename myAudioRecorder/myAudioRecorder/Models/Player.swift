@@ -39,10 +39,4 @@ class Player: NSObject {
 		guard let audioPlayer = audioPlayer else { return  nil}
 		return audioPlayer.duration
 	}
-	
-	
-	
-	
-	
-	
 }
