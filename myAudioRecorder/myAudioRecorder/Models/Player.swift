@@ -16,6 +16,7 @@ class Player: NSObject {
 	init(forResource: String) {
 		self.forResource = forResource
 		
+		
 		let audioUrl = Bundle.main.url(forResource: forResource, withExtension: "caf")!
 		do {
 			audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)

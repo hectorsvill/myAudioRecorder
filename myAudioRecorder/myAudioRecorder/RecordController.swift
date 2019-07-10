@@ -10,17 +10,18 @@ import Foundation
 import CoreData
 
 class RecordController {
-	var record: [Record] = []
+	private (set) var records: [Record] = []
 	
 	func fetchRecords() {
-	
+		let context = CoreDataStack.shared.mainContext
 		let fetchRequest: NSFetchRequest<Record> = Record.fetchRequest()
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
 		let fetchResultController =  NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
 		
-		CoreDataStack.shared.mainContext.performAndWait {
+		context.performAndWait {
 			do {
 				try fetchResultController.performFetch()
-				record = fetchResultController.fetchedObjects ??  []
+				records = fetchResultController.fetchedObjects ??  []
 				
 			} catch {
 				NSLog("Error fetching results from store: \(error)")
@@ -28,6 +29,13 @@ class RecordController {
 		}
 	}
 
+	
+	func addRecord(url: String) {
+		let record = Record(url: url)
+		records.append(record)
+		try? CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
+	}
+	
 	
 	
 }
