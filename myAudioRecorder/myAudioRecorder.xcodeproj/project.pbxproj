@@ -67,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C6F03F22D530E700D2FACE /* AppDelegate.swift */,
+				E8EB89BE22D5BE5A00E1E8BD /* Play-And-Record */,
 				E8C6F05522D5348000D2FACE /* Models */,
 				E8EB89BD22D5B83200E1E8BD /* Model Controller */,
 				E8C6F05222D5342500D2FACE /* View Controllers */,
@@ -100,8 +101,6 @@
 				E8EB89B422D5ABFC00E1E8BD /* Record.xcdatamodeld */,
 				E8EB89B722D5B1DE00E1E8BD /* Convenience+Record.swift */,
 				E8EB89B922D5B1ED00E1E8BD /* CoreDataStack.swift */,
-				E8C6F05322D5347A00D2FACE /* Recorder.swift */,
-				E8EB89B222D54B0A00E1E8BD /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +111,15 @@
 				E8EB89BB22D5B7EC00E1E8BD /* RecordController.swift */,
 			);
 			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		E8EB89BE22D5BE5A00E1E8BD /* Play-And-Record */ = {
+			isa = PBXGroup;
+			children = (
+				E8C6F05322D5347A00D2FACE /* Recorder.swift */,
+				E8EB89B222D54B0A00E1E8BD /* Player.swift */,
+			);
+			path = "Play-And-Record";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

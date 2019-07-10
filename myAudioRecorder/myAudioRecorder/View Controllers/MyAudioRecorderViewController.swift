@@ -42,7 +42,7 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	@objc func stopRecording() {
-		guard let fileUrl = recorder?.fileUrl else { return }
+		guard let fileUrl = recorder?.name else { return }
 		let url = "\(fileUrl)"
 		
 		recordController.addRecord(url: url)
@@ -57,9 +57,7 @@ class MyAudioRecorderViewController: UIViewController {
 		guard let url = recordedNameLabel.text else { return }
 		
 		player = Player(forResource: url)
-		guard let duration  = player?.duration else { return }
-		slider.maximumValue = Float(duration)
-		print("The duaration is : ",duration)
+		
 		player?.play()
 			
 	}

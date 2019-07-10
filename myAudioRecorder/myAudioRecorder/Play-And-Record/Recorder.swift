@@ -11,6 +11,7 @@ import AVFoundation
 class Recorder: NSObject {
 	private var audioRecorder: AVAudioRecorder?
 	var fileUrl: URL?
+	var name: String?
 	
 	var isRecording: Bool {
 		guard let audioRecorder = audioRecorder else { return false }
@@ -24,8 +25,8 @@ class Recorder: NSObject {
 	func record() {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
-		let name = ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
-		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
+		name = ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
+		fileUrl = documentDirectory.appendingPathComponent(name!).appendingPathExtension("caf")
 		
 		let format = AVAudioFormat(standardFormatWithSampleRate: 44_100, channels: 1)!
 		
