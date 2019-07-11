@@ -122,8 +122,17 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let name = mediaController.allMeddia[indexPath.row].name else { return }
 		recordedNameLabel.text = "\(name)"
-		player?.pause()
-		player = nil
+		
+		// mark fix this
+		
+		
+		if let player = player {
+			player.pause()
+			self.player = nil
+			playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
+			
+		}
+		
 	}
 }
 
