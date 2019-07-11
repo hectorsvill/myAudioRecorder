@@ -11,7 +11,6 @@
 		E800B36622D68EB500169F98 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36522D68EB500169F98 /* MediaController.swift */; };
 		E800B36922D68FCE00169F98 /* Convenience+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36822D68FCE00169F98 /* Convenience+Media.swift */; };
 		E800B36C22D6BB7400169F98 /* Notification+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36B22D6BB7400169F98 /* Notification+ext.swift */; };
-		E800B37022D7005C00169F98 /* myVideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */; };
 		E800B37222D703AF00169F98 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B37122D703AF00169F98 /* CameraViewController.swift */; };
 		E800B37422D7041400169F98 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B37322D7041400169F98 /* CameraPreviewView.swift */; };
 		E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F03F22D530E700D2FACE /* AppDelegate.swift */; };
@@ -29,7 +28,6 @@
 		E800B36522D68EB500169F98 /* MediaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
 		E800B36822D68FCE00169F98 /* Convenience+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convenience+Media.swift"; sourceTree = "<group>"; };
 		E800B36B22D6BB7400169F98 /* Notification+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+ext.swift"; sourceTree = "<group>"; };
-		E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myVideoRecorderViewController.swift; sourceTree = "<group>"; };
 		E800B37122D703AF00169F98 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E800B37322D7041400169F98 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		E8C6F03C22D530E700D2FACE /* myAudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myAudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */,
-				E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */,
 				E800B37122D703AF00169F98 /* CameraViewController.swift */,
 				E800B37322D7041400169F98 /* CameraPreviewView.swift */,
 			);
@@ -220,7 +217,6 @@
 				E800B36922D68FCE00169F98 /* Convenience+Media.swift in Sources */,
 				E800B36422D68D5900169F98 /* Media.xcdatamodeld in Sources */,
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
-				E800B37022D7005C00169F98 /* myVideoRecorderViewController.swift in Sources */,
 				E800B37422D7041400169F98 /* CameraPreviewView.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
 				E800B36622D68EB500169F98 /* MediaController.swift in Sources */,

@@ -46,7 +46,7 @@ class CameraViewController: UIViewController {
 		
 		captureSession.commitConfiguration()
 		
-		cameraView?.session = captureSession
+		cameraView.session = captureSession
 		
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
 		view.addGestureRecognizer(tapGesture)
