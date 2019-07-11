@@ -41,7 +41,6 @@ class MyAudioRecorderViewController: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
-		NotificationCenter.default.addObserver(Recorder.self, selector: #selector(audioRecorderDidFinishRecording), name: .audioRecorderDidFinishRecording, object: nil)
 	}
 	
 	@objc func getMediaName() {
@@ -83,23 +82,7 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	
-	
-	@objc func audioRecorderDidFinishRecording() {
-////		recorder = nil
-////
-////		recordedNameLabel.text = ""
-//
-//
-//		recorder = nil
-//		let str = recordedNameLabel?.text
-//		print(str)
-//		recordedNameLabel?.text = ""
-////		mediaController.addNewMedia(name: "", type: "")
-		
-		print("audioRecorderDidFinishRecordingaudioRecorderDidFinishRecordingaudioRecorderDidFinishRecording!!!!!!")
-		self.tableView.reloadData()
-		
-	}
+
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
 		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
@@ -108,6 +91,7 @@ class MyAudioRecorderViewController: UIViewController {
 		
 		if let player = player {
 			player.pause()
+			self.player = nil
 			
 		} else {
 			player = Player(name: name)
@@ -138,6 +122,8 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let name = mediaController.allMeddia[indexPath.row].name else { return }
 		recordedNameLabel.text = "\(name)"
+		player?.pause()
+		player = nil
 	}
 }
 
