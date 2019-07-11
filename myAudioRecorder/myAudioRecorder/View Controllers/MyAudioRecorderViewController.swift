@@ -8,6 +8,8 @@
 
 import UIKit
 
+//mediaController.addNewMedia(name: "", type: "audio")
+
 class MyAudioRecorderViewController: UIViewController {
 	let mediaController = MediaController()
 	
@@ -22,9 +24,6 @@ class MyAudioRecorderViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
 	
 	
-	var currentMediaName: String {
-		return recordedNameLabel.text ?? ""
-	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -46,36 +45,38 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	
-	private func getMediaName() {
+	private func getMediaName() -> String?{
 		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
 		
+		var str: String?
+
 		alertController.addTextField()
 		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
 			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
 				self.recordedNameLabel.text = nametext
+				str = nametext
 			}
 		}))
 		
 		present(alertController, animated: true)
+		return str
 	}
 	
 	@objc func startRecorder() {
-		getMediaName()
+		let name = getMediaName()!
 		
 		//setup Recorder
 		recorder = Recorder()
-		recorder?.startRecord(with: currentMediaName)
-
+		recorder?.startRecord(with: name)
+		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
 	
 	@objc func stopRecording() {
-		
 		recorder?.stop()
 		recorder = nil
 		
-		mediaController.addNewMedia(name: currentMediaName, type: "audio")
 		recordedNameLabel.text = ""
 		self.tableView.reloadData()
 		
@@ -87,19 +88,16 @@ class MyAudioRecorderViewController: UIViewController {
 		
 		guard let name = recordedNameLabel.text else { return }
 		
-		if player?.isPlaying == true{
-			player?.pause()
-		} else {
+		if let player = player {
+			player.pause()
 			
+		} else {
 			player = Player(name: name)
 			player?.setupPlayer()
 		}
-		
-		
 	}
 	
 	@IBAction func sliderValueChanged(_ sender: Any) {
-		
 	}
 	
 
@@ -120,10 +118,8 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let media = mediaController.allMeddia[indexPath.row]
-		recordedNameLabel.text = "\(media.name!)"
-		
-		
+		guard let name = mediaController.allMeddia[indexPath.row].name else { return }
+		recordedNameLabel.text = "\(name)"
 	}
 }
 

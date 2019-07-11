@@ -39,7 +39,9 @@ class Recorder: NSObject {
 			NSLog("Error trying to AVAudioRecorder: \(error)")
 		}
 		
-		guard let audioRecorder = audioRecorder else { return }
+		guard let audioRecorder = audioRecorder else {
+			print("error with audioRecorder!")
+			return }
 		audioRecorder.record()
 	}
 	
@@ -69,7 +71,7 @@ extension Recorder: AVAudioRecorderDelegate {
 	}
 	
 	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-		
+		//save file name
 	}
 	
 }

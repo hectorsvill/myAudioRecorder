@@ -21,12 +21,15 @@ class Player: NSObject {
 		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
 		let url = documentsDirectory.appendingPathComponent(name).appendingPathExtension("caf")
+		
+		print(url)
+		
 		do {
 			audioPlayer = try AVAudioPlayer(contentsOf: url)
 		} catch {
 			NSLog("audioPlayer: \(error)")
 		}
-		audioPlayer!.play()
+		audioPlayer?.play()
 	}
 	
 	var isPlaying: Bool {
@@ -53,5 +56,7 @@ class Player: NSObject {
 
 extension Player: AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+		// notify audio stop playing
+		
 	}
 }
