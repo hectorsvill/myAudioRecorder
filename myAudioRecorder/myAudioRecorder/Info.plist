@@ -43,5 +43,7 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Record Your Audio</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Record Your Video</string>
 </dict>
 </plist>

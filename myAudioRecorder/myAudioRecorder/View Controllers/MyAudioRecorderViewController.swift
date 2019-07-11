@@ -73,7 +73,7 @@ class MyAudioRecorderViewController: UIViewController {
 		})
 		
 		alertController.addAction(UIAlertAction(title: "Video", style: .default){ _ in
-			getMediaAudioVide()
+			self.getMediaNameForVideo()
 		})
 		
 		alertController.addAction(UIAlertAction(title: "clear", style: .cancel, handler: nil))
@@ -89,6 +89,12 @@ class MyAudioRecorderViewController: UIViewController {
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {[unowned alertController] _ in
 			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
 				//perform Segue To New View
+				//save file name to core data
+				DispatchQueue.main.async {
+					self.performSegue(withIdentifier: "ShowRecorder", sender: self)
+					
+				}
+				
 			}
 		}))
 		
