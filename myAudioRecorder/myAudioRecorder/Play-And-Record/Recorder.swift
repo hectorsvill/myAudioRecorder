@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+//name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
 
 class Recorder: NSObject {
 	private var audioRecorder: AVAudioRecorder?
@@ -26,15 +27,16 @@ class Recorder: NSObject {
 	/// create url for record, create recorder, start  recorder
 	func startRecord(with name: String) {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-		//name = UUID().uuidString //ISO8601DateFormatter.string(from: Date(), timeZone: .current, formatOptions: [.withInternetDateTime])
+		
+		print(documentDirectory)
 		
 		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
-		print(fileUrl!, name)
+		
 		let format = AVAudioFormat(standardFormatWithSampleRate: 44_100, channels: 1)!
 		
 		do {
-			guard let fileUrl = fileUrl else { return }
-			audioRecorder = try AVAudioRecorder(url: fileUrl, format: format)
+			
+			audioRecorder = try AVAudioRecorder(url: fileUrl!, format: format)
 		} catch {
 			NSLog("Error trying to AVAudioRecorder: \(error)")
 		}
@@ -46,19 +48,11 @@ class Recorder: NSObject {
 	}
 	
 	func stop() {
-		if let audioRecorder = audioRecorder {
-			audioRecorder.stop()
-			self.audioRecorder = nil
-		}
+		audioRecorder?.stop()
+		audioRecorder = nil
+		
 	}
-	
-//	func toggleRecording() {
-//		if isRecording {
-//			stop()
-//		} else {
-//			record()
-//		}
-//	}
+
 }
 
 extension Recorder: AVAudioRecorderDelegate {
@@ -72,6 +66,8 @@ extension Recorder: AVAudioRecorderDelegate {
 	
 	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 		//save file name
+		NotificationCenter.default.post(name: .audioRecorderDidFinishRecording, object: nil)
 	}
+	
 	
 }

@@ -32,7 +32,6 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
 		mediaController.fetchTracks()
 	}
 	
@@ -41,34 +40,33 @@ class MyAudioRecorderViewController: UIViewController {
 		mediaController.fetchTracks()
 		tableView.delegate = self
 		tableView.dataSource = self
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
+		NotificationCenter.default.addObserver(Recorder.self, selector: #selector(audioRecorderDidFinishRecording), name: .audioRecorderDidFinishRecording, object: nil)
 	}
 	
-	
-	private func getMediaName() -> String?{
+	@objc func getMediaName() {
 		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
-		
-		var str: String?
-
+	
 		alertController.addTextField()
 		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
-		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {[unowned alertController] _ in
 			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
-				self.recordedNameLabel.text = nametext
-				str = nametext
+				DispatchQueue.main.async {
+					self.recordedNameLabel.text = nametext
+					self.startRecorder(name: nametext)					
+				}
 			}
 		}))
-		
+	
+	
 		present(alertController, animated: true)
-		return str
+	
 	}
 	
-	@objc func startRecorder() {
-		let name = getMediaName()!
-		
+	@objc func startRecorder(name: String) {
 		//setup Recorder
-		recorder = Recorder()
-		recorder?.startRecord(with: name)
+		self.recorder = Recorder()
+		self.recorder?.startRecord(with: name)
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopRecording))
 	}
@@ -76,11 +74,26 @@ class MyAudioRecorderViewController: UIViewController {
 	@objc func stopRecording() {
 		recorder?.stop()
 		recorder = nil
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
+	}
+	
+	
+	
+	@objc func audioRecorderDidFinishRecording() {
+////		recorder = nil
+////
+////		recordedNameLabel.text = ""
+//
+//
+//		recorder = nil
+//		let str = recordedNameLabel?.text
+//		print(str)
+//		recordedNameLabel?.text = ""
+////		mediaController.addNewMedia(name: "", type: "")
 		
-		recordedNameLabel.text = ""
+		print("audioRecorderDidFinishRecordingaudioRecorderDidFinishRecordingaudioRecorderDidFinishRecording!!!!!!")
 		self.tableView.reloadData()
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
