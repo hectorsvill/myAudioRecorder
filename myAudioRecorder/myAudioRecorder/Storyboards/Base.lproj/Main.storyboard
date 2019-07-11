@@ -138,20 +138,37 @@
             </objects>
             <point key="canvasLocation" x="1851" y="263"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="LL5-Tg-AqZ">
             <objects>
-                <viewController id="pPM-0f-dba" sceneMemberID="viewController">
+                <viewController id="pPM-0f-dba" customClass="CameraViewController" customModule="myAudioRecorder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jF7-1w-GIM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMK-53-vZn">
+                                <rect key="frame" x="148" y="746" width="118" height="116"/>
+                                <state key="normal" title="Button" image="Record"/>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="pPM-0f-dba" eventType="touchUpInside" id="uJ5-WM-thV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pMK-53-vZn" firstAttribute="centerX" secondItem="jF7-1w-GIM" secondAttribute="centerX" id="C5v-fm-kDq"/>
+                            <constraint firstItem="pMK-53-vZn" firstAttribute="leading" secondItem="lhv-Td-5MM" secondAttribute="leading" constant="148" id="Hiz-0g-bfn"/>
+                            <constraint firstItem="pMK-53-vZn" firstAttribute="bottom" secondItem="lhv-Td-5MM" secondAttribute="bottom" id="xqM-ef-eTy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lhv-Td-5MM"/>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="pMK-53-vZn" id="nDc-fN-EHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmf-5a-0BQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2843" y="263"/>
+            <point key="canvasLocation" x="2842.0289855072465" y="262.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X3K-Ib-fVZ">
@@ -172,4 +189,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Record" width="116" height="116"/>
+    </resources>
 </document>

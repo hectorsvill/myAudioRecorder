@@ -12,6 +12,8 @@
 		E800B36922D68FCE00169F98 /* Convenience+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36822D68FCE00169F98 /* Convenience+Media.swift */; };
 		E800B36C22D6BB7400169F98 /* Notification+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36B22D6BB7400169F98 /* Notification+ext.swift */; };
 		E800B37022D7005C00169F98 /* myVideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */; };
+		E800B37222D703AF00169F98 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B37122D703AF00169F98 /* CameraViewController.swift */; };
+		E800B37422D7041400169F98 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B37322D7041400169F98 /* CameraPreviewView.swift */; };
 		E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F03F22D530E700D2FACE /* AppDelegate.swift */; };
 		E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */; };
 		E8C6F04522D530E700D2FACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C6F04322D530E700D2FACE /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		E800B36822D68FCE00169F98 /* Convenience+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convenience+Media.swift"; sourceTree = "<group>"; };
 		E800B36B22D6BB7400169F98 /* Notification+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+ext.swift"; sourceTree = "<group>"; };
 		E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myVideoRecorderViewController.swift; sourceTree = "<group>"; };
+		E800B37122D703AF00169F98 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E800B37322D7041400169F98 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		E8C6F03C22D530E700D2FACE /* myAudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myAudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C6F03F22D530E700D2FACE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAudioRecorderViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 			children = (
 				E8C6F04122D530E700D2FACE /* MyAudioRecorderViewController.swift */,
 				E800B36F22D7005C00169F98 /* myVideoRecorderViewController.swift */,
+				E800B37122D703AF00169F98 /* CameraViewController.swift */,
+				E800B37322D7041400169F98 /* CameraPreviewView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E800B37222D703AF00169F98 /* CameraViewController.swift in Sources */,
 				E8EB89BA22D5B1ED00E1E8BD /* CoreDataStack.swift in Sources */,
 				E800B36C22D6BB7400169F98 /* Notification+ext.swift in Sources */,
 				E8EB89B322D54B0A00E1E8BD /* Player.swift in Sources */,
@@ -214,6 +221,7 @@
 				E800B36422D68D5900169F98 /* Media.xcdatamodeld in Sources */,
 				E8C6F05422D5347A00D2FACE /* Recorder.swift in Sources */,
 				E800B37022D7005C00169F98 /* myVideoRecorderViewController.swift in Sources */,
+				E800B37422D7041400169F98 /* CameraPreviewView.swift in Sources */,
 				E8C6F04222D530E700D2FACE /* MyAudioRecorderViewController.swift in Sources */,
 				E800B36622D68EB500169F98 /* MediaController.swift in Sources */,
 				E8C6F04022D530E700D2FACE /* AppDelegate.swift in Sources */,

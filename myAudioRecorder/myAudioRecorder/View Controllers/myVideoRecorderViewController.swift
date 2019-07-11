@@ -13,12 +13,12 @@ class myVideoRecorderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		checkStatus()
 		
     }
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		checkStatus()
+		
 	}
     
 	func checkStatus() {
