@@ -42,13 +42,19 @@ class MyAudioRecorderViewController: UIViewController {
 		tableView.dataSource = self
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
 		NotificationCenter.default.addObserver(self, selector: #selector(timerDidChange), name: .timerChangedValue, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(audioPlayerDidFinishPlaying), name: .audioPlayerDidFinishPlaying, object: nil)
+	}
+	
+	@objc func audioPlayerDidFinishPlaying() {
+		resetPlayer()
+		print("audioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlaying")
 	}
 	
 	@objc func timerDidChange() {
 		
 		if let elapsedTime = player?.elapsedTime {
 			slider.value = Float(elapsedTime)
-			print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
+//			print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
 			
 		}
 		
@@ -56,21 +62,21 @@ class MyAudioRecorderViewController: UIViewController {
 	
 	@objc func getMediaName() {
 		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
-	
+		
 		alertController.addTextField()
 		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {[unowned alertController] _ in
 			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
 				DispatchQueue.main.async {
 					self.recordedNameLabel.text = nametext
-					self.startRecorder(name: nametext)					
+					self.startRecorder(name: nametext)
 				}
 			}
 		}))
-	
-	
+		
+		
 		present(alertController, animated: true)
-	
+		
 	}
 	
 	@objc func startRecorder(name: String) {
@@ -93,22 +99,20 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	
-
+	
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
-		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
+		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Stop", for: .normal)
 		
 		guard let name = recordedNameLabel.text else { return }
 		
-		if let _ = player {
+		if let player = player {
 			resetPlayer()
-			
 		} else {
+			
 			player = Player(name: name)
 			player?.setupPlayer()
 			
-			// set timer duration
-			// set slider duration
 			if let duration = player?.duration {
 				slider.maximumValue = Float(duration)
 			}
@@ -119,7 +123,7 @@ class MyAudioRecorderViewController: UIViewController {
 	@IBAction func sliderValueChanged(_ sender: Any) {
 	}
 	
-
+	
 }
 
 extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSource {
@@ -142,17 +146,17 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		
 		// Mark: fix this
 		resetPlayer()
+		
 	}
 	
-	private func resetPlayer() {
+	func resetPlayer() {
 		if let player = player {
 			player.pause()
 			self.player = nil
-			slider.value = Float(0)
-			playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
+			
+			slider.value = 0.0
+			playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "stop", for: .normal)
 			
 		}
 	}
-	
 }
-

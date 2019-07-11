@@ -11,7 +11,7 @@ import AVFoundation
 class Player: NSObject {
 	let name: String
 	private var audioPlayer: AVAudioPlayer?
-	private var timer: Timer?
+	var timer: Timer?
 
 	init(name: String) {
 		self.name = name
@@ -22,15 +22,13 @@ class Player: NSObject {
 		
 		let url = documentsDirectory.appendingPathComponent(name).appendingPathExtension("caf")
 		
-		print(url)
-		
 		do {
 			audioPlayer = try AVAudioPlayer(contentsOf: url)
 		} catch {
 			NSLog("audioPlayer: \(error)")
 		}
 		audioPlayer?.play()
-		Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
+		timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
 			self.updateTimer()
 		}
 	}
@@ -57,11 +55,14 @@ class Player: NSObject {
 	
 	func pause() {
 		audioPlayer?.pause()
+		timer?.invalidate()
+		timer = nil
 	}
 }
 
 extension Player: AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		// notify audio stop playing
+		NotificationCenter.default.post(name: .audioPlayerDidFinishPlaying, object: nil)
 	}
 }

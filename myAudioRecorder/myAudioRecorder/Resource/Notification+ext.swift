@@ -10,6 +10,6 @@ import Foundation
 
 
 extension Notification.Name {
-	static let audioRecorderDidFinishRecording = Notification.Name("AudioRecorderDidFinishRecording")
+	static let audioPlayerDidFinishPlaying = Notification.Name("AudioPlayerDidFinishPlaying")
 	static let timerChangedValue = Notification.Name("TimerChangedValue")
 }
