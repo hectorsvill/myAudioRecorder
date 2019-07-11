@@ -43,19 +43,23 @@ class MyAudioRecorderViewController: UIViewController {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
 		NotificationCenter.default.addObserver(self, selector: #selector(timerDidChange), name: .timerChangedValue, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(audioPlayerDidFinishPlaying), name: .audioPlayerDidFinishPlaying, object: nil)
+//		NotificationCenter.default.addObserver(self, selector: #selector(audioRecorderDidFinishRecording), name: .audioRecorderDidFinishRecording, object: nil)
+	}
+	
+	@objc func audioRecorderDidFinishRecording() {
+		
 	}
 	
 	@objc func audioPlayerDidFinishPlaying() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 		resetPlayer()
-		print("audioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlayingaudioPlayerDidFinishPlaying")
 	}
 	
 	@objc func timerDidChange() {
 		
 		if let elapsedTime = player?.elapsedTime {
 			slider.value = Float(elapsedTime)
-//			print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
-			
+			timerLabel.text = String(format: "%0.2f", elapsedTime)
 		}
 		
 	}
@@ -95,7 +99,10 @@ class MyAudioRecorderViewController: UIViewController {
 		mediaController.addNewMedia(name: text, type: "audio")
 		recordedNameLabel.text = ""
 		tableView.reloadData()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
+		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
+		
+		
 	}
 	
 	
@@ -106,7 +113,7 @@ class MyAudioRecorderViewController: UIViewController {
 		
 		guard let name = recordedNameLabel.text else { return }
 		
-		if let player = player {
+		if let _ = player {
 			resetPlayer()
 		} else {
 			
@@ -153,9 +160,10 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		if let player = player {
 			player.pause()
 			self.player = nil
-			
 			slider.value = 0.0
-			playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "stop", for: .normal)
+			recordedNameLabel.text = ""
+			timerLabel.text = "0.0"
+			playToggleButton.setTitle("Play", for: .normal)
 			
 		}
 	}

@@ -15,9 +15,11 @@ class Player: NSObject {
 
 	init(name: String) {
 		self.name = name
+		
 	}
 	
 	func setupPlayer() {
+		
 		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
 		let url = documentsDirectory.appendingPathComponent(name).appendingPathExtension("caf")
@@ -27,6 +29,7 @@ class Player: NSObject {
 		} catch {
 			NSLog("audioPlayer: \(error)")
 		}
+		audioPlayer?.delegate = self
 		audioPlayer?.play()
 		timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
 			self.updateTimer()
@@ -62,7 +65,8 @@ class Player: NSObject {
 
 extension Player: AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-		// notify audio stop playing
+		timer?.invalidate()
+		timer = nil
 		NotificationCenter.default.post(name: .audioPlayerDidFinishPlaying, object: nil)
 	}
 }

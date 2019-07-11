@@ -40,10 +40,10 @@ class Recorder: NSObject {
 		} catch {
 			NSLog("Error trying to AVAudioRecorder: \(error)")
 		}
-		
 		guard let audioRecorder = audioRecorder else {
 			print("error with audioRecorder!")
 			return }
+//		audioRecorder.delegate = self
 		audioRecorder.record()
 	}
 	
@@ -64,6 +64,7 @@ extension Recorder: AVAudioRecorderDelegate {
 	
 	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 		//save file name
+		NotificationCenter.default.post(name: .audioRecorderDidFinishRecording, object: nil)
 	}
 	
 	
