@@ -74,6 +74,11 @@ class MyAudioRecorderViewController: UIViewController {
 	@objc func stopRecording() {
 		recorder?.stop()
 		recorder = nil
+		
+		let text = recordedNameLabel.text!
+		mediaController.addNewMedia(name: text, type: "audio")
+		recordedNameLabel.text = ""
+		tableView.reloadData()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
 	}
 	
