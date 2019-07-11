@@ -120,6 +120,9 @@ class CameraViewController: UIViewController {
 		view.layer.addSublayer(playerLayer)
 		
 		player.play()
+		Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+			self.dismiss(animated: true, completion: nil)
+		}
 	}
 	
 	@IBAction func recordButtonPressed(_ sender: Any) {
@@ -150,4 +153,6 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
 			self.playMovie(url: outputFileURL)
 		}
 	}
+	
+	
 }
