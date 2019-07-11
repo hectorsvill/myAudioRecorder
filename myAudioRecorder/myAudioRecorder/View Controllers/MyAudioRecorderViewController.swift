@@ -100,13 +100,8 @@ class MyAudioRecorderViewController: UIViewController {
 		
 		guard let name = recordedNameLabel.text else { return }
 		
-		if let player = player {
-			player.pause()
-			self.player = nil
-			
-			// reset timer duration
-			// reset slider duration
-			
+		if let _ = player {
+			resetPlayer()
 			
 		} else {
 			player = Player(name: name)
@@ -146,13 +141,18 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		recordedNameLabel.text = "\(name)"
 		
 		// Mark: fix this
+		resetPlayer()
+	}
+	
+	private func resetPlayer() {
 		if let player = player {
 			player.pause()
 			self.player = nil
+			slider.value = Float(0)
 			playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Play", for: .normal)
 			
 		}
-		
 	}
+	
 }
 
