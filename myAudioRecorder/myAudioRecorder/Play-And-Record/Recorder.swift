@@ -28,7 +28,7 @@ class Recorder: NSObject {
 	func startRecord(with name: String) {
 		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		
-		print(documentDirectory)
+//		print(documentDirectory)
 		
 		fileUrl = documentDirectory.appendingPathComponent(name).appendingPathExtension("caf")
 		
@@ -58,15 +58,12 @@ class Recorder: NSObject {
 extension Recorder: AVAudioRecorderDelegate {
 	func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
 		if let error = error {
-			print("audioRecorderEncodeErrorDidOccur: \(error)")
+			fatalError("audioRecorderEncodeErrorDidOccur: \(error)")
 		}
-		
-		
 	}
 	
 	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 		//save file name
-		NotificationCenter.default.post(name: .audioRecorderDidFinishRecording, object: nil)
 	}
 	
 	

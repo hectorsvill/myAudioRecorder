@@ -41,6 +41,11 @@ class MyAudioRecorderViewController: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
+		NotificationCenter.default.addObserver(self, selector: #selector(timerDidChange), name: .timerChangedValue, object: nil)
+	}
+	
+	@objc func timerDidChange() {
+		print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
 	}
 	
 	@objc func getMediaName() {
@@ -93,9 +98,16 @@ class MyAudioRecorderViewController: UIViewController {
 			player.pause()
 			self.player = nil
 			
+			// reset timer duration
+			// reset slider duration
+			
+			
 		} else {
 			player = Player(name: name)
 			player?.setupPlayer()
+			
+			// set timer duration
+			// set slider duration
 		}
 	}
 	
@@ -123,9 +135,7 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 		guard let name = mediaController.allMeddia[indexPath.row].name else { return }
 		recordedNameLabel.text = "\(name)"
 		
-		// mark fix this
-		
-		
+		// Mark: fix this
 		if let player = player {
 			player.pause()
 			self.player = nil

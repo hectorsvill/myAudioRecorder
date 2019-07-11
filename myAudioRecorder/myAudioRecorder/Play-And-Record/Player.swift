@@ -30,6 +30,12 @@ class Player: NSObject {
 			NSLog("audioPlayer: \(error)")
 		}
 		audioPlayer?.play()
+		Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
+			self.updateTimer()
+		}
+	}
+	func updateTimer() {
+		NotificationCenter.default.post(name: .timerChangedValue, object: nil)
 	}
 	
 	var isPlaying: Bool {
@@ -57,6 +63,5 @@ class Player: NSObject {
 extension Player: AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		// notify audio stop playing
-		
 	}
 }
