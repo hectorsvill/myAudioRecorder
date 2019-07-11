@@ -45,7 +45,13 @@ class MyAudioRecorderViewController: UIViewController {
 	}
 	
 	@objc func timerDidChange() {
-		print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
+		
+		if let elapsedTime = player?.elapsedTime {
+			slider.value = Float(elapsedTime)
+			print("TimerChanged!TimerChanged!TimerChanged!TimerChanged!TimerChanged!")
+			
+		}
+		
 	}
 	
 	@objc func getMediaName() {
@@ -108,6 +114,10 @@ class MyAudioRecorderViewController: UIViewController {
 			
 			// set timer duration
 			// set slider duration
+			if let duration = player?.duration {
+				slider.maximumValue = Float(duration)
+			}
+			
 		}
 	}
 	
