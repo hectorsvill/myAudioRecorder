@@ -113,11 +113,27 @@
                         <outlet property="slider" destination="xrR-5l-RTd" id="r5t-H5-SyE"/>
                         <outlet property="tableView" destination="HiL-yr-Hup" id="vQX-4s-Bsv"/>
                         <outlet property="timerLabel" destination="lJz-Qx-Fqd" id="hVg-9Y-eNA"/>
+                        <segue destination="owh-4W-OCB" kind="presentation" id="4Ox-cC-Xby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="138.61607142857142"/>
+        </scene>
+        <!--Request Action View Controller-->
+        <scene sceneID="7mv-i5-3x9">
+            <objects>
+                <viewController id="owh-4W-OCB" customClass="RequestActionViewController" customModule="myAudioRecorder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dtz-5m-xLt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Dhq-gL-wew"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTe-un-3vX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1851" y="263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X3K-Ib-fVZ">

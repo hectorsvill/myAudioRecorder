@@ -40,15 +40,15 @@ class MyAudioRecorderViewController: UIViewController {
 		mediaController.fetchTracks()
 		tableView.delegate = self
 		tableView.dataSource = self
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaAudioVide))
 		NotificationCenter.default.addObserver(self, selector: #selector(timerDidChange), name: .timerChangedValue, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(audioPlayerDidFinishPlaying), name: .audioPlayerDidFinishPlaying, object: nil)
 //		NotificationCenter.default.addObserver(self, selector: #selector(audioRecorderDidFinishRecording), name: .audioRecorderDidFinishRecording, object: nil)
 	}
 	
-	@objc func audioRecorderDidFinishRecording() {
-		
-	}
+//	@objc func audioRecorderDidFinishRecording() {
+//		
+//	}
 	
 	@objc func audioPlayerDidFinishPlaying() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(startRecorder))
@@ -64,7 +64,39 @@ class MyAudioRecorderViewController: UIViewController {
 		
 	}
 	
-	@objc func getMediaName() {
+	
+	@objc func getMediaAudioVide() {
+		let alertController = UIAlertController(title: "Audio / Video", message: nil, preferredStyle: .actionSheet)
+		
+		alertController.addAction(UIAlertAction(title: "Audio", style: .default){ _ in
+			self.getMediaNameForAudio()
+		})
+		
+		alertController.addAction(UIAlertAction(title: "Video", style: .default){ _ in
+			getMediaAudioVide()
+		})
+		
+		alertController.addAction(UIAlertAction(title: "clear", style: .cancel, handler: nil))
+		
+		present(alertController, animated: true)
+	}
+	
+	func getMediaNameForVideo() {
+		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
+		
+		alertController.addTextField()
+		alertController.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {[unowned alertController] _ in
+			if let nametext = alertController.textFields![0].text, !nametext.isEmpty {
+				//perform Segue To New View
+			}
+		}))
+		
+		present(alertController, animated: true)
+		
+	}
+	
+	 func getMediaNameForAudio() {
 		let alertController = UIAlertController(title: "My Media Recorder", message: "Name This Media", preferredStyle: .alert)
 		
 		alertController.addTextField()
@@ -77,7 +109,6 @@ class MyAudioRecorderViewController: UIViewController {
 				}
 			}
 		}))
-		
 		
 		present(alertController, animated: true)
 		
@@ -100,13 +131,10 @@ class MyAudioRecorderViewController: UIViewController {
 		recordedNameLabel.text = ""
 		tableView.reloadData()
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaName))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(getMediaAudioVide))
 		
 		
 	}
-	
-	
-	
 	
 	@IBAction func playToggleButtonPressed(_ sender: UIButton) {
 		playToggleButton.setTitle(playToggleButton.titleLabel?.text == "Play" ? "Pause" : "Stop", for: .normal)
@@ -150,8 +178,6 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let name = mediaController.allMeddia[indexPath.row].name else { return }
 		recordedNameLabel.text = "\(name)"
-		
-		// Mark: fix this
 		resetPlayer()
 		
 	}
