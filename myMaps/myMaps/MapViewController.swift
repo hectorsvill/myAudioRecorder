@@ -9,19 +9,19 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
 
 	let locationManager = CLLocationManager()
-	var places: [Place] = []
+	var places: [Place] = Place.getPlaces()
 	
 	@IBOutlet var mapView: MKMapView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
-		places = Place.getPlaces()
+		mapView?.addAnnotations(places)
 		
-		
+		//mapView.register(MKAnnotation.self, forAnnotationViewWithReuseIdentifier: "annotationView")
 		
 	}
 	
@@ -39,4 +39,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		
 	}
 }
+
+extension MapViewController: MKMapViewDelegate {
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		if annotation is MKUserLocation {
+			return nil
+		}
+		
+		let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView")
+		
+		
+		return annotationView
+	}
+	
+	
+	
+}
+
+
+
+
+
+
 
