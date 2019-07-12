@@ -206,8 +206,6 @@ extension MyAudioRecorderViewController: UITableViewDelegate, UITableViewDataSou
 	}
 	
 	func checkStatus() {
-		
-		
 		let status = AVCaptureDevice.authorizationStatus(for: .video)
 		
 		switch status {

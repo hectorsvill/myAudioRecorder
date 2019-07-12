@@ -105,7 +105,7 @@ class CameraViewController: UIViewController {
 			recordButton.tintColor = UIColor.red
 		}
 	}
-	
+	/// MARK: Play movie
 	func playMovie(url: URL) {
 		
 		player = AVPlayer(url: url)
@@ -150,6 +150,9 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
 		
 		DispatchQueue.main.async {
 			self.updateViews()
+			
+			/// MARK: outputFileURL must be saved
+//			dismiss(animated: true, completion: nil)
 			self.playMovie(url: outputFileURL)
 		}
 	}

@@ -14,6 +14,7 @@
 		E8EDF41522D7F57400644B34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EDF41322D7F57400644B34 /* LaunchScreen.storyboard */; };
 		E8EDF41D22D80E1000644B34 /* Places.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8EDF41C22D80E1000644B34 /* Places.plist */; };
 		E8EDF41F22D80E4300644B34 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDF41E22D80E4300644B34 /* Places.swift */; };
+		E8EDF42122D81AFB00644B34 /* Places+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDF42022D81AFB00644B34 /* Places+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E8EDF41622D7F57400644B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8EDF41C22D80E1000644B34 /* Places.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Places.plist; sourceTree = "<group>"; };
 		E8EDF41E22D80E4300644B34 /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		E8EDF42022D81AFB00644B34 /* Places+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Places+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				E8EDF41E22D80E4300644B34 /* Places.swift */,
+				E8EDF42022D81AFB00644B34 /* Places+Mapping.swift */,
 				E8EDF40C22D7F57200644B34 /* MapViewController.swift */,
 				E8EDF40A22D7F57200644B34 /* AppDelegate.swift */,
 				E8EDF40E22D7F57200644B34 /* Main.storyboard */,
@@ -144,6 +147,7 @@
 			files = (
 				E8EDF40D22D7F57200644B34 /* MapViewController.swift in Sources */,
 				E8EDF40B22D7F57200644B34 /* AppDelegate.swift in Sources */,
+				E8EDF42122D81AFB00644B34 /* Places+Mapping.swift in Sources */,
 				E8EDF41F22D80E4300644B34 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
