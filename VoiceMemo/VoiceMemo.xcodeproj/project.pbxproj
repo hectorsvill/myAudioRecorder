@@ -56,10 +56,10 @@
 		E8EDF44F22D84E5100644B34 /* VoiceMemo */ = {
 			isa = PBXGroup;
 			children = (
-				E8EDF45022D84E5100644B34 /* AppDelegate.swift */,
-				E8EDF45222D84E5100644B34 /* VoiceMemoViewController.swift */,
 				E8EDF46222D8532200644B34 /* Recorder.swift */,
+				E8EDF45222D84E5100644B34 /* VoiceMemoViewController.swift */,
 				E8EDF45422D84E5100644B34 /* Main.storyboard */,
+				E8EDF45022D84E5100644B34 /* AppDelegate.swift */,
 				E8EDF45722D84E5400644B34 /* Assets.xcassets */,
 				E8EDF45922D84E5400644B34 /* LaunchScreen.storyboard */,
 				E8EDF45C22D84E5400644B34 /* Info.plist */,
