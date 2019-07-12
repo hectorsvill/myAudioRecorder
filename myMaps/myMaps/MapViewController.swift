@@ -39,6 +39,8 @@ class MapViewController: UIViewController {
 	}
 	
 	
+	
+	
 	func requestLocationAccess() {
 		let status = CLLocationManager.authorizationStatus()
 		
@@ -65,13 +67,10 @@ extension MapViewController: MKMapViewDelegate {
 		annotationView.canShowCallout = true
 		
 		let dv = DetailView(frame: .zero)
+		dv.backgroundColor = .red
 		annotationView.detailCalloutAccessoryView = dv
 		
-//		guard let place = annotation as? Place else { return nil }
-		
-//		annotationView.glyphText = "\(place.title!)"
-		
-		
+
 		return annotationView
 	}
 	
@@ -92,7 +91,6 @@ extension MapViewController: MKMapViewDelegate {
 		
 		print(title)
 	}
-	
 	
 	
 }

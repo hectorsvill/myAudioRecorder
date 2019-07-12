@@ -21,9 +21,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUu-5u-Ri8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gko-jl-5sc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gko-jl-5sc">
                                 <rect key="frame" x="356" y="791" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.54901960780000003" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Post">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,10 +34,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gko-jl-5sc" secondAttribute="trailing" constant="27" id="CML-gy-XbE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jUu-5u-Ri8" secondAttribute="trailing" id="NgR-ZN-sEi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jUu-5u-Ri8" secondAttribute="bottom" id="V9a-LJ-aKq"/>
                             <constraint firstItem="jUu-5u-Ri8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gzK-yO-5de"/>
                             <constraint firstItem="jUu-5u-Ri8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="j3I-s0-0us"/>
+                            <constraint firstItem="gko-jl-5sc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="m3Z-WQ-iSO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gko-jl-5sc" secondAttribute="bottom" constant="41" id="mMp-2i-jHf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
