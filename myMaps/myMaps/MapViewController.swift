@@ -24,6 +24,10 @@ class MapViewController: UIViewController {
 		mapView.delegate = self
 		mapView?.addAnnotations(places)
 		
+		let overlays = places.map { MKCircle(center: $0.coordinate, radius: 100)}
+		mapView?.addOverlays(overlays)
+
+		
 		mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "someAnnotation")
 		
 	}
@@ -56,9 +60,12 @@ extension MapViewController: MKMapViewDelegate {
 		
 		let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "someAnnotation", for: annotation) as! MKMarkerAnnotationView
 		annotationView.glyphImage = UIImage(named: "QuakeIcon")
-		annotationView.glyphTintColor = .black
+		annotationView.glyphTintColor = .white
+		annotationView.markerTintColor = .black
 		annotationView.canShowCallout = true
 		
+		let dv = DetailView(frame: .zero)
+		annotationView.detailCalloutAccessoryView = dv
 		
 //		guard let place = annotation as? Place else { return nil }
 		
@@ -66,6 +73,24 @@ extension MapViewController: MKMapViewDelegate {
 		
 		
 		return annotationView
+	}
+	
+
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+		let render = MKCircleRenderer(overlay: overlay)
+		render.fillColor = UIColor.black.withAlphaComponent(0.5)
+		render.strokeColor = .brown
+		render.lineWidth = 2
+		
+		return render
+		
+	}
+
+
+	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		guard let title = view.annotation?.title as? String else { return }
+		
+		print(title)
 	}
 	
 	
