@@ -21,9 +21,16 @@ class MapViewController: UIViewController {
 		mapView.delegate = self
 		mapView?.addAnnotations(places)
 		
-		//mapView.register(MKAnnotation.self, forAnnotationViewWithReuseIdentifier: "annotationView")
+		mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "someAnnotation")
 		
 	}
+	
+	@IBAction func postButtonPressed(_ sender: Any) {
+		// make a post
+		print("post")
+	
+	}
+	
 	
 	func requestLocationAccess() {
 		let status = CLLocationManager.authorizationStatus()
@@ -42,11 +49,15 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-		if annotation is MKUserLocation {
-			return nil
-		}
+		let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "someAnnotation", for: annotation) as! MKMarkerAnnotationView
+		annotationView.glyphImage = UIImage(named: "QuakeIcon")
+		annotationView.glyphTintColor = .black
+		annotationView.canShowCallout = true
 		
-		let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView")
+		
+		guard let place = annotation as? Place else { return nil }
+		
+//		annotationView.glyphText = "\(place.title!)"
 		
 		
 		return annotationView
