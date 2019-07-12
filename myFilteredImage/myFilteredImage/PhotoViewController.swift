@@ -65,11 +65,15 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
 	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		picker.dismiss(animated: true)
-		if let image = info[.originalImage] as? UIImage {
-			imageView?.image = filter(image: image)
+		picker.dismiss(animated: true) {
+			if let image = info[.originalImage] as? UIImage {
+				DispatchQueue.main.async {
+					self.imageView?.image = self.filter(image: image)
+				}
+			}
 		}
-		
 	}
+		
+//	}
 	
 }
