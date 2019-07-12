@@ -41,7 +41,7 @@
                                             <color key="titleColor" red="0.96862745100000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="recordButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qip-YT-qFM"/>
+                                            <action selector="recordButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RAA-6n-qyF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -69,8 +69,7 @@
                                             <color key="titleColor" red="0.96862745100000003" green="0.98823529409999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ld2-28-tVd"/>
-                                            <action selector="recordButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m3T-wC-d0q"/>
+                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1wx-NA-qrJ"/>
                                         </connections>
                                     </button>
                                 </subviews>

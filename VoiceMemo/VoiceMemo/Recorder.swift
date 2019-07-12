@@ -61,7 +61,7 @@ extension Recorder: AVAudioRecorderDelegate {
 	
 	func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
 		NotificationCenter.default.post(name: .audioRecorderDidFinishRecording, object: nil)
-		print("audioRecorderDidFinishRecording")
+//		print("audioRecorderDidFinishRecording")
 	}
 }
 

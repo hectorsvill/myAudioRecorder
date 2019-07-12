@@ -11,6 +11,7 @@ import AVFoundation
 
 class VoiceMemoViewController: UIViewController {
 	private var recorder: Recorder?
+	private var player: Player?
 	
 	@IBOutlet var nameTextField: UITextField!
 	@IBOutlet var recordLabel: UILabel!
@@ -20,13 +21,16 @@ class VoiceMemoViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		NotificationCenter.default.addObserver(self, selector: #selector(audioRecorderDidFinishRecording), name: .audioRecorderDidFinishRecording, object: nil)
-		
+		NotificationCenter.default.addObserver(self, selector: #selector(audioPlayerDidFinishPlaying), name: .audioPlayerDidFinishPlaying, object: nil)
 	}
 	
+	@objc func audioPlayerDidFinishPlaying() {
+		print("AudioPlayerDidFinishPlaying")
+	}
 	
 
 	@IBAction func recordButtonPressed(_ sender: Any) {
-		guard let name = nameTextField.text else {
+		guard let name = nameTextField.text, !name.isEmpty else {
 			print("empty Name")
 			return
 		}
@@ -49,12 +53,20 @@ class VoiceMemoViewController: UIViewController {
 	
 	@IBAction func playButtonPressed(_ sender: Any) {
 		print("play")
+		guard let currentRecord = currentRecord, !currentRecord.isEmpty else {
+			print("currentRecord is empty")
+			return
+		}
+		print("play: \(currentRecord)")
+		player = Player(name: currentRecord)
+		player?.setupPlayer()
+		
 	}
 	
 	
 	@objc func audioRecorderDidFinishRecording() {
 		recordLabel.text = currentRecord!
-		nameTextField.text = ""
+//		nameTextField.text = ""
 	}
 }
 

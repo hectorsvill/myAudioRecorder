@@ -15,6 +15,7 @@ class Player: NSObject {
 	
 	init(name: String) {
 		self.name = name
+		
 	}
 	
 	func setupPlayer() {
@@ -28,11 +29,11 @@ class Player: NSObject {
 		} catch {
 			NSLog("audioPlayer: \(error)")
 		}
-		audioPlayer?.delegate = self
 		audioPlayer?.play()
-		timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
-			self.updateTimer()
-		}
+		print(url)
+		//		timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { _ in
+//			self.updateTimer()
+//		}
 	}
 	func updateTimer() {
 //		NotificationCenter.default.post(name: .timerChangedValue, object: nil)
@@ -57,8 +58,8 @@ class Player: NSObject {
 	
 	func pause() {
 		audioPlayer?.pause()
-		timer?.invalidate()
-		timer = nil
+//		timer?.invalidate()
+//		timer = nil
 	}
 }
 
