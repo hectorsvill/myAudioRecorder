@@ -16,9 +16,6 @@ class PhotoViewController: UIViewController {
 	private let filter = CIFilter(name: "CIColorControls")
 	private let context = CIContext(options: nil)
 	
-	var ogImage: UIImage?
-	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -26,6 +23,7 @@ class PhotoViewController: UIViewController {
 	
 	
 	@IBAction func addPhotoButton(_ sender: Any) {
+		imageView.image = nil
 		guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
 			fatalError("AddPhoto error")
 		}
@@ -35,6 +33,26 @@ class PhotoViewController: UIViewController {
 		
 		imagePicker.delegate = self
 		present(imagePicker, animated: true)
+	}
+	
+	private func filter(image: UIImage) -> UIImage {
+		guard let cgImage = image.cgImage else { return image}
+		let ciImage = CIImage(cgImage: cgImage)
+		filter?.setValue(ciImage, forKey: kCIInputImageKey)
+		filter?.setValue(1.05, forKey: kCIInputSaturationKey)
+		filter?.setValue(1, forKey: kCIInputBrightnessKey)
+		filter?.setValue(3, forKey:  kCIInputContrastKey)
+		
+		guard let outputImage = filter?.outputImage else {
+			NSLog("error")
+			return image
+		}
+		
+		guard let outputCGImage = context.createCGImage(outputImage, from: outputImage.extent) else { return image}
+		
+		
+		
+		return UIImage(cgImage: outputCGImage)
 	}
 	
 
@@ -47,12 +65,11 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
 	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		picker.dismiss(animated: true)
 		if let image = info[.originalImage] as? UIImage {
-//			ogImage = image
-			imageView?.image = image
+			imageView?.image = filter(image: image)
 		}
 		
-		picker.dismiss(animated: true)
 	}
 	
 }
